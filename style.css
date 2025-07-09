@@ -3,12 +3,14 @@
     --lightBlue: #3E4E5E;
     --greenBlue: #1A3D45;
     --offWhite: #dedede;
+    --vh: 1vh;
 }
 body{
     background-color: var(--darkBlue);
     color: var(--offWhite);
     margin: 0;
     font-family: 'Josefin Sans', Arial, Helvetica, sans-serif;
+    height: 100vh;
 }
 header{
     display: flex;
@@ -34,11 +36,19 @@ section{
     margin-right: 0;
 }
 #bottomSection{
-    height: 300px;
+    position: relative;
+    height: 280px;
     overflow-y: scroll;
     border-radius: 5px;
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+#gradient{
+    position: sticky;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    background: linear-gradient(#dedede00, #192734);
 }
 #bottomSection::-webkit-scrollbar{
     display: none;
@@ -82,5 +92,15 @@ section{
 .info{
     text-align: right;
     width: 100%;
-
+}
+nav{
+    position: absolute;
+    bottom: 2.5vh;
+    margin-left: 2rem;
+    height: 50px;
+    width: calc(100% - 4rem);
+    background-color: var(--greenBlue);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
 }
