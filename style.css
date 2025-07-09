@@ -42,13 +42,9 @@ section{
     height: min-content;
     flex-shrink: 0;
 }
-#rightWrapper{
-    display: flex;
-    flex-direction: row;
-}
 #bottomSectionWrapper{
     overflow: hidden;
-    height: 40%;
+    height: 50%;
 }
 #bottomSection{
     position: relative;
@@ -75,13 +71,12 @@ section{
 }
 #titleContainer{
     position: relative;
-    display: flex;
     justify-content: center;
     align-items: center;
     margin-inline: 10px;
     width: calc(100% - 20px);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 #title{
     text-align: center;
