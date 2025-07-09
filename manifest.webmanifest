@@ -1,0 +1,20 @@
+{
+    "name": "Tuneify",
+    "short_name": "Tuneify",
+    "start_url": ".",
+    "display": "standalone",
+    "background_colo": "#fff",
+    "description": "A music utility app",
+    "icons": [
+        {
+            "src": "tuneify-logo.png",
+            "size": "512z512",
+            "type": "image/png"
+        },
+        {
+            "src": "tuneify-logo.png",
+            "size": "192x192",
+            "type": "image/png"
+        }
+    ]
+}
