@@ -12,6 +12,7 @@ body{
     font-family: 'Josefin Sans', Arial, Helvetica, sans-serif;
     overflow: auto;
     height: 100vh;
+    overflow: hidden;
 }
 header{
     height: 90px;

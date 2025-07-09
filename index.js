@@ -6,7 +6,7 @@ function setBottomSectionHeight(nav, wrapper){
     var navBoundingClientTop = nav.getBoundingClientRect().top
     var wrapperBoundingClientTop = wrapper.getBoundingClientRect().top
     var setHeight = navBoundingClientTop - wrapperBoundingClientTop
-    wrapper.style["height"] = (setHeight-32) + "px"
+    wrapper.style["height"] = (setHeight - 20) + "px"
 }
 
 const APIController = (function(){
