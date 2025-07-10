@@ -47,6 +47,10 @@ section{
     overflow: hidden;
     height: 50%;
 }
+#date{
+    font-family: monospace;
+    font-size: 7.5pt;
+}
 #bottomSection{
     position: relative;
     height: 100%;
@@ -101,7 +105,7 @@ section{
     align-items: center;
     background-color: var(--lightBlue);
     border-radius: 7px;
-    padding: 8px;
+    padding: 5px;
     padding-left: 15px;
     padding-right: 15px;
     margin-bottom: 5px;
@@ -109,7 +113,8 @@ section{
 .infoCard > h3{
     width: 100%;
 }
-.info{
+.infoCard > .info{
+    font-family: monospace;
     text-align: right;
     width: 100%;
 }
@@ -123,4 +128,20 @@ section{
     align-items: center;
     position: absolute;
     bottom: 0;
+}
+.input{
+    font-family: monospace;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: var(--lightBlue);
+    border: #192734 0rem;
+    color: var(--offWhite);
+}
+#songSelector{
+    width: 100%;
+    margin: 10px;
+    background-color: var(--lightBlue);
+    color: var(--offWhite);
 }

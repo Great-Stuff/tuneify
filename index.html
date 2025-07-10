@@ -17,51 +17,64 @@
         <img id="logo" src="tuneify-logo.png" alt="" width="100px">
     </header>
     <section id="topSection">
-        <img id="albumCover" src="https://upload.wikimedia.org/wikipedia/commons/2/20/TheBeatles68LP.jpg" alt="">
+        <img id="albumCover" class="info" src="" alt="">
         <div id="titleContainer">
-            <h2 id="title">While my Guitar Gently Weeps</h2>
-            <p id="artistWithDate"><span id="artist">The Beatles</span> <br> <span id="date">1968</span></p>
+            <h2 id="title" class="info"></h2>
+            <p id="artistWithDate"><span id="artist" class="info"></span> <br> <span id="date" class="info"></span></p>
         </div>
     </section>
     <div id="bottomSectionWrapper">
         <section id="bottomSection">
             <div class="infoCard" id="topCard">
                 <h3>Album</h3>
-                <p class="info">The Beatles</p>
+                <p id="infoAlbum" class="info"></p>
             </div>
             <div class="infoCard">
                 <h3>Length</h3>
-                <p class="info">4min 45sec</p>
+                <p id="infoLength" class="info"></p>
             </div>
             <div class="infoCard">
                 <h3>Streams</h3>
-                <p class="info">316,000,000</p>
+                <p id="infoStreams" class="info"></p>
             </div>
             <div class="infoCard">
                 <h3>Genre</h3>
-                <p class="info">Rock</p>
+                <p id="infoGenre" class="info"></p>
             </div>
             <div class="infoCard">
                 <h3>Key</h3>
-                <p class="info">A Minor</p>
+                <p id="infoKey" class="info"></p>
+            </div>
+            <div class="infoCard">
+                <h3>Camelot</h3>
+                <p id="infoCamelot" class="info"></p>
             </div>
             <div class="infoCard">
                 <h3>BPM</h3>
-                <p class="info">113 bpm</p>
+                <p id="infoBpm" class="info"></p>
+            </div>
+            <div class="infoCard">
+                <h3>Popularity</h3>
+                <p id="infoPop" class="info"></p>
             </div>
             <div class="infoCard">
                 <h3>Time Signature</h3>
-                <p class="info">4/4</p>
+                <p id="infoTs" class="info"></p>
             </div>
             <div class="infoCard" id="bottomCard">
                 <h3>Label</h3>
-                <p class="info">Apple Records</p>
+                <p id="infoLabel" class="info"></p>
             </div>
             <div id="gradient"></div>
         </section>
     </div>
     <div id="nav">
-        
+        <select name="" id="songSelector">
+            <option value="default">Default</option>
+            <option value="guitarWeeps">While my Guitar Gently Weeps</option>
+            <option value="pop">POP</option>
+            <option value="layla">Layla</option>
+        </select>
     </div>
 
 </body>
