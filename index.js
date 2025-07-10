@@ -3,6 +3,10 @@ const bottomSectionWrapper = document.querySelector("#bottomSectionWrapper")
 const nav = document.querySelector("#nav")
 const info = Array.from(document.querySelectorAll(".info"))
 const songSelector = document.querySelector("#songSelector")
+const clientId = "c8ec3ce2c45744aba5d6ea3600369586"
+const clientSecret = "6ab8f00bd049463989778aee207b0630"
+const scopes = "user-read-currently-playing user-read-playback-state"
+const redirectUri = "http://127.0.0.1:3000/callback.html";
 
 function setBottomSectionHeight(nav, wrapper){
     var navBoundingClientTop = nav.getBoundingClientRect().top
@@ -28,93 +32,49 @@ function populate(info, object){
     console.log(elementList)
 }
 
+function loginWithSpotify(clientId, redirectUri, scopes){
+    const authUrl = new URL("https://accounts.spotify.com/authorize")
+    authUrl.searchParams.set("client_id", clientId)
+    authUrl.searchParams.set("response_type", "token")
+    authUrl.searchParams.set("redirect_uri", redirectUri)
+    authUrl.searchParams.set("scope", scopes)
+    
+    window.location.href = authUrl
+}
+
+
+
 /*
-const APIController = (function(){
-    const clientID = ""
-    const clientSecret = ""
-
-    //private methods
-    const _getToken = async () =>{
-        const result = await fetch("https://accounts.spotify.com/api/token", {
-            method: "POST",
-            headers: {
-                "content-type": "application/x-www-form-urlencoed",
-                "Authorization": "basic " + btoa(clientID+":"+clientSecret)
-            },
-            body: "grant_type=client-credentials"
-        })
-        const data = await result.json()
-        return data.access_token
-    }
-
-    const _getGenres = async (token, genreID) =>{
-        const limit = 10
-
-        const result = await fetch(`https://api.spotify.com/v1/browse/categories/?locale=vs_US`, {
-            method: "GET",
-            headers: {"Authorization": "Bearer " + token }
-        })
-
-        const data = await result.json()
-        return data.playlist.items
-    }
-
-    const _getPlaylistGenre = async (token) =>{
-        const limit = 10
-
-        const result = await fetch(`https://api.spotify.com/v1/browse/categories/${genreID}/playlists?limit=${limit}`, {
-            method: "GET",
-            headers: {"Authorization": "Bearer " + token }
-        })
-
-        const data = await result.json()
-        return data.playlist.items
-    }
-
-    const _getTracks = async (token, tracksEndPoint) =>{
-        const limit = 10
-
-        const result = await fetch(`${tracksEndPoint}?limit=${limit}`, {
-            method: "GET",
-            headers: {"Authorization": "Bearer " + token }
-        })
-
-        const data = await result.json()
-        return data.playlist.items
-    }
-
-    const _getTrack = async (token, trackEndPoint) =>{
-        const limit = 10
-
-        const result = await fetch(`${trackEndPoint}`, {
-            method: "GET",
-            headers: {"Authorization": "Bearer " + token }
-        })
-
-        const data = await result.json()
-        return data.playlist.items
-    }
-
-    return{
-        getToken(){
-            return _getToken()
+async function getAccessToken(clientId, clientSecret) {
+    const response = await fetch("https://accounts.spotify.com/api/token", {
+        method: "POST",
+        headers: {
+            Authorization:
+            "Basic " + btoa(`${clientId}:${clientSecret}`),
+            "Content-Type": "application/x-www-form-urlencoded"
         },
-        getGenres(token){
-            return _getGenres(token)
-        },
-        getPlaylistGenre(token, genreID){
-            return _getPlaylistGenre(token, genreID)
-        },
-        getTracks(token, tracksEndPoint){
-            return _getTracks(token, tracksEndPoint)
-        },
-        getTrack(token, trackEndPoint){
-            return _getTrack(token, trackEndPoint)
-        }
-    }
-})();
+        body: "grant_type=client_credentials"
+    })
+    const data = await response.json()
+    return data.access_token
+    
+    async function searchTrack(query, token) {
+        const response = await fetch ( "https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track",)
+             {
+        headers: {
+                Authorization: 'Bearer ${token}`
+                }
+            }
+};
+    const data = await response.json();
+    console.log(data.tracks.items);
+}
+    data.tracks.items.forEach((track) => {
+        console.log(track.name + "by" + track.artists[0].name);
+        });
 
-console.log(APIController)
+
+console.log(getAccessToken("c8ec3ce2c45744aba5d6ea3600369586", "6ab8f00bd049463989778aee207b0630"))
 */
 
 const loader = {
@@ -124,7 +84,7 @@ const loader = {
     date: "Jan 1, 1900",
     album: "Album",
     length: "4min 30sec",
-    streams: "100,000,000",
+    streams: "100,000",
     genre: "Rock",
     key: "A Minor",
     camelot: "10A",
@@ -168,7 +128,7 @@ const POP = {
 }
 const layla = {
     albumCover: "https://m.media-amazon.com/images/I/71aBthW-zPL._UF1000,1000_QL80_.jpg",
-    name: "Layla",
+    name: "Layla", 
     artist: "Derek and the Dominos",
     date: "Nov 9, 1970",
     album: "Layla and Other Assorted Love Songs",
@@ -202,4 +162,5 @@ songSelector.addEventListener("change", () =>{
 
 console.log(whileMyGuitarGentlyWeeps.name)
 
-document.addEventListener('reload', setBottomSectionHeight(nav, bottomSectionWrapper))
+window.addEventListener('load', () => setBottomSectionHeight(nav, bottomSectionWrapper))
+window.addEventListener('resize', () => setBottomSectionHeight(nav, bottomSectionWrapper))
